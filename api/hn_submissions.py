@@ -34,24 +34,32 @@ for submission_id in submission_ids[:10]:
     # Build a dictionary for each article.
     submission_dict = {
 
-        'title': response_dict['title'],
+        'title': response_dict['title'], # key: title, value: json_object->title
 
+         # key: hn_link, value: dynamic URL
         'hn_link': f"http://news.ycombinator.com/item?id={submission_id}",
 
+         # key: comments, value: json_object->descendants
         'comments': response_dict['descendants'],
-    }
 
-    submission_dicts.append(submission_dict)
+    } # end submission_dict
+
+    submission_dicts.append(submission_dict) # append new dictionary
     
+# reverse sort submission_dicts based on comments
 submission_dicts = sorted(submission_dicts, key=itemgetter('comments'),
                             reverse=True)
 
+# iterate over each individual dictionary
 for submission_dict in submission_dicts:
 
+    # print "Title: {submission_dict->title}"
     print(f"\nTitle: {submission_dict['title']}")
 
+    # print "Discussion link: {submission_dict->URL}"
     print(f"Discussion link: {submission_dict['hn_link']}")
 
+    # print "Comments: {submission_dict->comments}"
     print(f"Comments: {submission_dict['comments']}")
 
 
