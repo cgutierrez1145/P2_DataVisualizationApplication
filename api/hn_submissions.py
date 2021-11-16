@@ -3,12 +3,14 @@ from operator import itemgetter
 import requests # HTTP Library
 
 # Make an API call and store the response.
+
+# set the value of the URL to send API call to
 url = 'https://hacker-news.firebaseio.com/v0/topstories.json'
 
  # assign request.Response object from URL to r
 r = requests.get(url) 
 
-# display stqatus code of HTTP connection
+# display stqatus code of API call (HTTP Connection)
 print(f"Status code: {r.status_code}")
 
 # # Process information about each submission.
